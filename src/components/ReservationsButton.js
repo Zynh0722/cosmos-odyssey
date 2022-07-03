@@ -4,7 +4,7 @@ import './css/mainbutton.css';
 
 function ReservationsButton() {
     return ( 
-            <Link className="btn btn-primary" to="/reservations">
+            <Link className="btn" to="/reservations">
                 Check reservations
             </Link>
     );
