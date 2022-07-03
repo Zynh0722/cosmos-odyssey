@@ -4,11 +4,14 @@ import Main from '../components/Main';
 import Planets from '../components/Planets';
 import Reservations from '../components/Reservations';
 import {Routes,Route} from 'react-router-dom';
+import Title from '../components/Title';
 import './app.css';
 
 function App() {
   return (
     <div className="App">
+      <Title />
+
       <Routes>
         <Route exact path="/" 
           element={<Main />} />

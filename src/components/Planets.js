@@ -2,7 +2,7 @@ import React from 'react';
 
 function Planets() {
     return ( 
-        <p>Hello!</p>
+        <p>Hi</p>
     );
 }
 

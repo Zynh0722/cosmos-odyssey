@@ -1,13 +1,11 @@
 import React from 'react';
 import PlanetsButton from './PlanetsButton';
 import ReservationsButton from './ReservationsButton';
-import Title from './Title';
+import './css/main.css';
 
 function Main() {
     return (
         <main>
-            <Title />
-
             <div className="row mx-1 my-3">
                 <PlanetsButton />
             </div>

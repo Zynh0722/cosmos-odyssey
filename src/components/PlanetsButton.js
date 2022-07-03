@@ -4,7 +4,7 @@ import './css/mainbutton.css';
 
 function PlanetsButton() {
     return ( 
-            <Link className="btn" to="/planets">
+            <Link className="btn planets-btn" to="/planets">
                 I'm looking to make a reservation
             </Link>
     );

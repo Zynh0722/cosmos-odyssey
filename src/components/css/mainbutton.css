@@ -1,3 +1,24 @@
-button {
-    background: #1a191980;
+.btn {
+    background: #312f2fbe;
+    width:fit-content;
+    margin: 0 auto;
+    color: #f6f6f6;
+    padding: 2rem;
+    font-size: 1.5rem;
+}
+
+.reservations-btn {
+    margin-top: 4rem;
+}
+
+.reservations-btn:hover {
+    background-color: #312f2f80;
+}
+
+.planets-btn {
+    margin-top: 10rem;
+}
+
+.planets-btn:hover {
+    background-color: #312f2f80;
 }
