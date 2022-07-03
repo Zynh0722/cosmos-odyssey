@@ -5,7 +5,7 @@ function Footer() {
     return (
         <footer className="navbar fixed-bottom bg-color-navbar">
             <div className="navbar-container-text">
-                <p>
+                <p className='navbar-p'>
                     2022 Riho-Martin Haavasalu
                 </p>
             </div>

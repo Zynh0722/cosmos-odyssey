@@ -2,6 +2,10 @@
     background-color: #141414;
 }
 
+.navbar-p {
+    margin-bottom: 0;
+}
+
 .navbar-container-text {
     margin: 0 auto;
     height: fit-content;

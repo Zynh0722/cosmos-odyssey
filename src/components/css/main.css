@@ -5,7 +5,7 @@ body{
 body::after {
     content: "";
     background: url("../../../public/space-bg.jpg");
-    opacity: 0.4;
+    opacity: 0.05;
     top: 0;
     left: 0;
     bottom: 0;

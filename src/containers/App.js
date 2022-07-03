@@ -3,8 +3,9 @@ import Footer from '../components/Footer';
 import Main from '../components/Main';
 import Planets from '../components/Planets';
 import Reservations from '../components/Reservations';
-import {Routes,Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Title from '../components/Title';
+import Pricelist from '../components/Pricelist';
 import './app.css';
 
 function App() {
@@ -13,16 +14,19 @@ function App() {
       <Title />
 
       <Routes>
-        <Route exact path="/" 
+        <Route exact path="/"
           element={<Main />} />
 
-        <Route exact path="/planets" 
+        <Route exact path="/planets"
           element={<Planets />} />
-          
-        <Route exact path="/reservations" 
+
+        <Route exact path="/reservations"
           element={<Reservations />} />
+
+        <Route exact path="/pricelist"
+          element={<Pricelist />} />
       </Routes>
-      
+
       <Footer />
     </div>
   );
