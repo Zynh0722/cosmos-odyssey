@@ -21,7 +21,6 @@ function Reservations() {
                     <div className='col-sm-2'><p className='row-content-p'>12 days</p></div>
                     <div className='col-sm-2'><p className='row-content-p'>Hellflights - Straight to Hell</p></div>
                 </div>
-                
             </div>
         </Fragment>
     );

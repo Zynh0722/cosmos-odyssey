@@ -6,12 +6,15 @@ import './css/main.css';
 function Main() {
     return (
         <main>
-            <div className="row mx-1 my-3">
-                <PlanetsButton />
-            </div>
+            <div className="container container-main">
+                <h1 className='text-center'>Cosmos Odyssey</h1>
+                <div className="row mx-1 my-3">
+                    <PlanetsButton />
+                </div>
 
-            <div className="row mx-1 my-3">
-                <ReservationsButton />
+                <div className="row mx-1 my-3">
+                    <ReservationsButton />
+                </div>
             </div>
         </main>
     );

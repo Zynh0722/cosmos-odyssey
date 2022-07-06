@@ -1,0 +1,32 @@
+{
+    "Mercury": [
+        "Venus"
+    ],
+    "Venus": [
+        "Mercury",
+        "Earth"
+    ],
+    "Earth": [
+        "Jupiter",
+        "Uranus"
+    ],
+    "Mars": [
+        "Venus"
+    ],
+    "Jupiter": [
+        "Venus",
+        "Mars"
+    ],
+    "Saturn": [
+        "Earth",
+        "Neptune"
+    ],
+    "Uranus": [
+        "Saturn",
+        "Neptune"
+    ],
+    "Neptune": [
+        "Mercury",
+        "Uranus"
+    ]
+}

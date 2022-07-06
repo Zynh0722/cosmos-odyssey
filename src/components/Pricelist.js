@@ -1,6 +1,6 @@
 import React from 'react';
 import { Fragment } from 'react';
-import './css/pricelist.css'
+import './css/main.css'
 
 function Pricelist() {
     return (
