@@ -51,11 +51,8 @@ function ReservationModal({ modal }) {
         if (lName.length > 35) {
             error2.style.display = "block";
         } else if (error2.style.display == "block") {
-            console.log("Hi!");
             error2.style.display = "none";
         }
-
-        console.log(error2.style.display == "block");
     })
 
     return (

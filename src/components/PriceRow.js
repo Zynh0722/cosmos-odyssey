@@ -1,25 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import MakeReservationButton from './MakeReservationButton';
 
-function PriceRow({ modal }) {
-
-    const modalId = modal;
-
-    useEffect(() => {
-        var btn = document.getElementById("ModalButton");
-
-        btn.onclick = function () {
-            modalId.style.display = "block";
-        }
-    })
+function PriceRow({ modal, provider, distance }) {
 
     return (
         <div className='row row-content'>
             <hr />
-            <div className='col-sm-3'><p className='row-content-p'>Company Name of Doom and Death</p></div>
-            <div className='col-sm-2'><p className='row-content-p'>12893718951389.23$</p></div>
-            <div className='col-sm-2'><p className='row-content-p'>1847138745 km</p></div>
-            <div className='col-sm-3'><p className='row-content-p'>12 days</p></div>
-            <div className='col-sm-2'><button id='ModalButton' className='btn btn-pricelist'>Make a reservation</button></div>
+            <div className='col-sm-2'><p className='row-content-p'>{provider.company.name}</p></div>
+            <div className='col-sm-2'><p className='row-content-p'>{provider.price}€</p></div>
+            <div className='col-sm-2'><p className='row-content-p'>{distance} km</p></div>
+            <div className='col-sm-2'><p className='row-content-p'>{new Date(provider.flightStart).toLocaleDateString()} - {new Date(provider.flightEnd).toLocaleDateString()}</p></div>
+            <div className='col-sm-2'><p className='row-content-p'>{((Date.parse(provider.flightEnd) - Date.parse(provider.flightStart))/86400000).toFixed(1)} days</p></div>
+            <MakeReservationButton
+                modal={modal} />
         </div>
     );
 }

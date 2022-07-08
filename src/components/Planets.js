@@ -6,14 +6,12 @@ import SubtitleTo from './SubtitleTo';
 import SubmitButton from './SubmitButton';
 const relations = require('../planetrelations.json');
 
-function Planets() {
+function Planets({fromPlanet, toPlanet, setFromPlanet, setToPlanet}) {
 
     const [activity, setActivity] = useState('');
     const [visibility, setVisibility] = useState('hidden');
     const [routes, setRoutes] = useState([]);
-    const [selectedObject1, setSelectedObject1] = useState();
-    const [selectedObject2, setSelectedObject2] = useState();
-    const [allDone, setAllDone] = useState(false);
+    const [allDone, setAllDone] = useState();
 
     function delay(time) {
         return new Promise(resolve => setTimeout(resolve, time));
@@ -21,26 +19,27 @@ function Planets() {
 
     useEffect(() => {
         try{
-            if (selectedObject1.length === 0) {
-                console.log(selectedObject1);
+            if (fromPlanet.length === 0) {
+                console.log(fromPlanet);
                 setVisibility('hiddenOut');
                 delay(1950).then(() => setVisibility('hidden'));
                 setActivity('');
-            } else if (selectedObject1.length > 1) { 
+            } else if (fromPlanet.length > 1) { 
                 setVisibility('visibleIn');
                 setActivity('disabled');
             }
         } catch (error) {
 
         }
-    }, [selectedObject1])
+    }, [fromPlanet])
 
     useEffect(() => {
         try {
-            setRoutes(relations[selectedObject1]);
-            if(selectedObject2.length > 2) {
-                document.getElementById("Continue").
-                    classList.remove('disabled');
+            setRoutes(relations[fromPlanet]);
+            if(toPlanet.length > 2) {
+                setAllDone(true);
+            } else {
+                setAllDone(false);
             }
         } catch (error) {
 
@@ -58,66 +57,68 @@ function Planets() {
                 <div className='row row-planets'>
                     <div className='col-sm-1 col-planet'>
                         <Planet planetName={"Mercury"}
-                            selectedObject1={selectedObject1}
-                            selectedObject2={selectedObject2}
-                            setSelectedObject1={setSelectedObject1}
-                            setSelectedObject2={setSelectedObject2} />
+                            fromPlanet={fromPlanet}
+                            toPlanet={toPlanet}
+                            setFromPlanet={setFromPlanet}
+                            setToPlanet={setToPlanet} />
                     </div>
                     <div className='col-sm-1 col-planet'>
                         <Planet planetName={"Venus"}
-                            selectedObject1={selectedObject1}
-                            selectedObject2={selectedObject2}
-                            setSelectedObject1={setSelectedObject1}
-                            setSelectedObject2={setSelectedObject2} />
+                            fromPlanet={fromPlanet}
+                            toPlanet={toPlanet}
+                            setFromPlanet={setFromPlanet}
+                            setToPlanet={setToPlanet} />
                     </div>
                     <div className='col-sm-1 col-planet'>
                         <Planet planetName={"Earth"}
-                            selectedObject1={selectedObject1}
-                            selectedObject2={selectedObject2}
-                            setSelectedObject1={setSelectedObject1}
-                            setSelectedObject2={setSelectedObject2} />
+                            fromPlanet={fromPlanet}
+                            toPlanet={toPlanet}
+                            setFromPlanet={setFromPlanet}
+                            setToPlanet={setToPlanet} />
                     </div>
                     <div className='col-sm-1 col-planet'>
                         <Planet planetName={"Mars"}
-                            selectedObject1={selectedObject1}
-                            selectedObject2={selectedObject2}
-                            setSelectedObject1={setSelectedObject1}
-                            setSelectedObject2={setSelectedObject2} />
+                            fromPlanet={fromPlanet}
+                            toPlanet={toPlanet}
+                            setFromPlanet={setFromPlanet}
+                            setToPlanet={setToPlanet} />
                     </div>
                     <div className='col col-planet'>
                         <Planet planetName={"Jupiter"}
-                            selectedObject1={selectedObject1}
-                            selectedObject2={selectedObject2}
-                            setSelectedObject1={setSelectedObject1}
-                            setSelectedObject2={setSelectedObject2} />
+                            fromPlanet={fromPlanet}
+                            toPlanet={toPlanet}
+                            setFromPlanet={setFromPlanet}
+                            setToPlanet={setToPlanet} />
                     </div>
                     <div className='col col-planet'>
                         <Planet planetName={"Saturn"}
-                            selectedObject1={selectedObject1}
-                            selectedObject2={selectedObject2}
-                            setSelectedObject1={setSelectedObject1}
-                            setSelectedObject2={setSelectedObject2} />
+                            fromPlanet={fromPlanet}
+                            toPlanet={toPlanet}
+                            setFromPlanet={setFromPlanet}
+                            setToPlanet={setToPlanet} />
                     </div>
                     <div className='col-sm-2 col-planet'>
                         <Planet planetName={"Uranus"}
-                            selectedObject1={selectedObject1}
-                            selectedObject2={selectedObject2}
-                            setSelectedObject1={setSelectedObject1}
-                            setSelectedObject2={setSelectedObject2} />
+                            fromPlanet={fromPlanet}
+                            toPlanet={toPlanet}
+                            setFromPlanet={setFromPlanet}
+                            setToPlanet={setToPlanet} />
                     </div>
                     <div className='col-sm-2 col-planet'>
                         <Planet planetName={"Neptune"}
-                            selectedObject1={selectedObject1}
-                            selectedObject2={selectedObject2}
-                            setSelectedObject1={setSelectedObject1}
-                            setSelectedObject2={setSelectedObject2} />
+                            fromPlanet={fromPlanet}
+                            toPlanet={toPlanet}
+                            setFromPlanet={setFromPlanet}
+                            setToPlanet={setToPlanet} />
                     </div>
                 </div>
             </div>
             <PossibleRoutes 
                 routes={routes}/>
             <SubmitButton 
-                allDone={allDone}/>
+                allDone={allDone}
+                fromPlanet={fromPlanet}
+                toPlanet={toPlanet}/>
         </div>
     );
 }

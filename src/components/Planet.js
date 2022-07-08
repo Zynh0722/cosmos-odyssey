@@ -1,40 +1,40 @@
 import React, { Fragment, useEffect } from 'react';
 const json = require('../planetrelations.json');
 
-function Planet({ planetName, selectedObject1, selectedObject2, setSelectedObject1, setSelectedObject2 }) {
+function Planet({ planetName, fromPlanet, toPlanet, setFromPlanet, setToPlanet }) {
     
     function selectPlanet(planetName) {
         let planetId = document.getElementById(planetName).classList;
         //console.log(planetId);
         //console.log(planetName);
 
-        if (!selectedObject1) {
+        if (!fromPlanet) {
             planetId.add('selected');
-            setSelectedObject1(planetName);
-        } else if (planetName === selectedObject1) {
+            setFromPlanet(planetName);
+        } else if (planetName === fromPlanet) {
             planetId.remove('selected');
-            setSelectedObject1('');
-            if (selectedObject2) {
-                document.getElementById(selectedObject2).
+            setFromPlanet('');
+            if (toPlanet) {
+                document.getElementById(toPlanet).
                     classList.remove('selected');
-                setSelectedObject2('');
+                setToPlanet('');
             }
-        } else if (selectedObject1 && !selectedObject2) {
+        } else if (fromPlanet && !toPlanet) {
             planetId.add('selected');
-            setSelectedObject2(planetName);
-        } else if (planetName == selectedObject2) {
+            setToPlanet(planetName);
+        } else if (planetName == toPlanet) {
             planetId.remove('selected');
-            setSelectedObject2('');
+            setToPlanet('');
         }
     };
 
     useEffect(() => {
         let planetId = document.getElementById(planetName).classList;
         if (planetId.contains('disabled')) { 
-            if (selectedObject1 && !selectedObject2 && json[selectedObject1].includes(planetName)) {
+            if (fromPlanet && !toPlanet && json[fromPlanet].includes(planetName)) {
                planetId.remove('disabled');
-            } else if (selectedObject1) {
-                if (planetName == selectedObject1) {
+            } else if (fromPlanet) {
+                if (planetName == fromPlanet) {
                     planetId.remove('disabled');
                     return;
                 }
@@ -45,12 +45,12 @@ function Planet({ planetName, selectedObject1, selectedObject2, setSelectedObjec
         }
     });
 
-    if (selectedObject1 && selectedObject2) {
-        if (planetName !== selectedObject1 && planetName !== selectedObject2) {
+    if (fromPlanet && toPlanet) {
+        if (planetName !== fromPlanet && planetName !== toPlanet) {
             document.getElementById(planetName).classList.add('disabled');
         }
-    } else if (selectedObject1) {
-        if (!json[selectedObject1].includes(planetName) && planetName !== selectedObject1) {
+    } else if (fromPlanet) {
+        if (!json[fromPlanet].includes(planetName) && planetName !== fromPlanet) {
             document.getElementById(planetName).classList.add('disabled');
         }
     };

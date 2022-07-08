@@ -242,6 +242,12 @@ hr {
     font-size: 1rem;
 }
 
+.subtitle-row {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    color: #a3a2a2;
+}
+
 /* Reservation Modal */
 
 .modal {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Main from '../components/Main';
 import Planets from '../components/Planets';
@@ -8,6 +8,19 @@ import Pricelist from '../components/Pricelist';
 import './app.css';
 
 function App() {
+
+  const [pricelist, setPricelist] = useState([]);
+  const [fromPlanet, setFromPlanet] = useState();
+  const [toPlanet, setToPlanet] = useState();
+  const [pricelistId, setPricelistId] = useState();
+
+  useEffect(() => {
+    fetch("http://localhost:5000/pricelists")
+      .then(res => res.json())
+      .then(data => setPricelist(data));
+      setPricelistId(pricelist.id);
+  }, []);
+
   return (
     <div className="App">
 
@@ -16,13 +29,23 @@ function App() {
           element={<Main />} />
 
         <Route exact path="/planets"
-          element={<Planets />} />
+          element={<Planets 
+            fromPlanet={fromPlanet}
+            toPlanet={toPlanet}
+            setFromPlanet={setFromPlanet}
+            setToPlanet={setToPlanet} />} />
 
         <Route exact path="/reservations"
           element={<Reservations />} />
 
         <Route exact path="/pricelist"
-          element={<Pricelist />} />
+          element={<Pricelist 
+            fromPlanet={fromPlanet}
+            toPlanet={toPlanet}
+            leg={
+              pricelist.legs?.filter((leg) => leg.routeInfo.from.name === fromPlanet && leg.routeInfo.to.name === toPlanet)[0]
+            }
+            pricelistId={pricelistId} />} />
       </Routes>
 
       <Footer />

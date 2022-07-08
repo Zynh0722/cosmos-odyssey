@@ -14,7 +14,9 @@ const ObjectId = require("mongodb").ObjectId;
 const axios = require("axios");
 
 
-// Check if there's a new pricelist, add newest one if it doesn't exist. Deletes the oldest one if there's more than 15. Sends back the newest pricelist.
+// Check if there's a new pricelist, add newest one if it doesn't exist. 
+// Deletes the oldest one if there's more than 15, also deleting the reservations attached to it. 
+// Sends back the newest pricelist.
 recordRoutes.route("/pricelists").get(function (req, res) {
   axios.get('https://cosmos-odyssey.azurewebsites.net/api/v1.0/TravelPrices')
     .then(res => res.data)
@@ -48,26 +50,39 @@ recordRoutes.route("/pricelists").get(function (req, res) {
     .then(data => res.send(data));
 });
 
-// This section gets you a single pricelist.
-recordRoutes.route("/pricelists/:id").get(function (req, res) {
-  let db_connect = dbo.getDb();
-  let myquery = { _id: ObjectId(req.params.id) };
+// Post a reservation
+
+recordRoutes.route("/reservations/post").post(function(req, res) {
+  let db_connect = dbo.getDb("cosmosDB");
+  let reservation = {
+      FirstName: req.body.FirstName,
+      LastName: req.body.LastName,
+      Route: req.body.Route,
+      Price: req.body.Price,
+      FlightStart: req.body.FlightStart,
+      FlightEnd: req.body.FlightEnd,
+      Company: req.body.Company,
+      PricelistId: req.body.PricelistId
+  };
   db_connect
-    .collection("pricelists")
-    .findOne(myquery, function (err, result) {
+    .collection("reservations")
+    .insertOne(reservation, function(err, response) {
       if (err) throw err;
-      res.json(result);
+      response.send(res);
     });
 });
 
-// This section will help you get a new pricelist
-recordRoutes.route("/pricelist/add").post(function (req, response) {
-  let db_connect = dbo.getDb();
-  let myobj = {
-    name: req.body.name,
-    position: req.body.position,
-    level: req.body.level,
-  };
+
+// Gets you all the reservations
+recordRoutes.route("/reservations/getall").get(function (req, res) {
+  let db_connect = dbo.getDb("cosmosDB");
+  db_connect
+    .collection("reservations")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) throw err;
+        res.send(result);
+    });
 });
 
 // This section will help you delete a pricelist
