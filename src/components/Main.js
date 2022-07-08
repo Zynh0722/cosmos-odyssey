@@ -2,8 +2,16 @@ import React from 'react';
 import PlanetsButton from './PlanetsButton';
 import ReservationsButton from './ReservationsButton';
 import './css/main.css';
+import Success from './Success';
 
 function Main() {
+    
+    var query = false;
+
+    if (new URLSearchParams(window.location.search).get('successful') === "true") {
+        query = true;
+    }
+
     return (
         <main>
             <div className="container container-main">
@@ -16,6 +24,8 @@ function Main() {
                     <ReservationsButton />
                 </div>
             </div>
+
+            {query ? <Success /> : ""}
         </main>
     );
 }

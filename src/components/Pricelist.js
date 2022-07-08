@@ -6,21 +6,25 @@ import PriceRow from './PriceRow';
 import PriceTitles from './PriceTitles';
 import ReservationModal from './ReservationModal';
 
-function Pricelist({ fromPlanet, toPlanet, leg, id }) {
+function Pricelist({ fromPlanet, toPlanet, leg, pricelistId }) {
 
     const [modal, setModal] = useState();
     const [condition, setCondition] = useState();
+    const [sendData, setSendData] = useState();
 
     useEffect(() => {
         try {
             if (leg.providers !== undefined && leg.providers !== null) {
                 setCondition(true);
-            }    
+            }
         } catch (error) {
-            
+
         }
         setModal(document.getElementById("ReservationModal"));
+        console.log(modal);
     }, [])
+
+
 
     return (
         <Fragment>
@@ -29,17 +33,24 @@ function Pricelist({ fromPlanet, toPlanet, leg, id }) {
                 <PriceTitles />
                 {
                     condition ?
-                        leg.providers.map(provider =>
+                        leg.providers.map((provider, index) =>
                             <PriceRow
                                 modal={modal}
                                 provider={provider}
-                                distance={leg.routeInfo.distance} />)
+                                distance={leg.routeInfo.distance}
+                                pricelistId={pricelistId}
+                                fromPlanet={fromPlanet}
+                                toPlanet={toPlanet}
+                                modalNumber={index}
+                                setSendData={setSendData} />)
                         :
                         <NoPriceRow />
                 }
             </div>
             <ReservationModal
-                modal={modal} />
+                modal={modal}
+                setSendData={setSendData}
+                sendData={sendData} />
         </Fragment>
     );
 }

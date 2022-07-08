@@ -17,8 +17,10 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:5000/pricelists")
       .then(res => res.json())
-      .then(data => setPricelist(data));
-      setPricelistId(pricelist.id);
+      .then(data => {
+        setPricelist(data)
+        setPricelistId(data.id)
+      })
   }, []);
 
   return (

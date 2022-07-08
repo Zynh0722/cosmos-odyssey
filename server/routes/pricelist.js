@@ -68,7 +68,7 @@ recordRoutes.route("/reservations/post").post(function(req, res) {
     .collection("reservations")
     .insertOne(reservation, function(err, response) {
       if (err) throw err;
-      response.send(res);
+      res.send(response);
     });
 });
 

@@ -61,6 +61,17 @@ body::after {
     background-color: #312f2f80;
 }
 
+.success-toast:not(.show) {
+    display: block;
+}
+
+.success-toast{
+    margin: 0 auto;
+    background-color: #3378b8;
+    padding: 0.2rem;
+    text-align: center;
+}
+
 /* Planets Page */
 
 .container-routes {
