@@ -38,7 +38,7 @@ recordRoutes.route("/pricelists").get(function (req, res) {
             let sortArray = await pricelists
             .find({})
             .toArray();
-            if (sortArray.length > 0) {
+            if (sortArray.length > 15) {
               sortArray.sort((a, b) => Date.parse(a.validUntil) - Date.parse(b.validUntil));
               let oldestPricelistId = sortArray[0].id;
               pricelists

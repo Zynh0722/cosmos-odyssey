@@ -277,6 +277,17 @@ hr {
     color: #a3a2a2;
 }
 
+.pricelist-title {
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    user-select:none;
+}
+
+.pricelist-title:hover {
+    color: white;
+    cursor: pointer;
+}
+
 /* Reservation Modal */
 
 .modal {
