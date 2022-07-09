@@ -45,15 +45,20 @@ function Planet({ planetName, fromPlanet, toPlanet, setFromPlanet, setToPlanet }
         }
     });
 
-    if (fromPlanet && toPlanet) {
-        if (planetName !== fromPlanet && planetName !== toPlanet) {
-            document.getElementById(planetName).classList.add('disabled');
-        }
-    } else if (fromPlanet) {
-        if (!json[fromPlanet].includes(planetName) && planetName !== fromPlanet) {
-            document.getElementById(planetName).classList.add('disabled');
-        }
-    };
+    try {
+        if (fromPlanet && toPlanet) {
+            if (planetName !== fromPlanet && planetName !== toPlanet) {
+                document.getElementById(planetName).classList.add('disabled');
+            }
+        } else if (fromPlanet) {
+            if (!json[fromPlanet].includes(planetName) && planetName !== fromPlanet) {
+                document.getElementById(planetName).classList.add('disabled');
+            }
+        };
+    } catch (error) {
+        setFromPlanet("");
+        setToPlanet("");
+    }
 
 
     return (
