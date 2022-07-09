@@ -18,7 +18,7 @@ function Reservations({reservations}) {
     return (  
         <Fragment>
             <p className='subtitle'>Reservations</p>
-            <div className='container'>
+            <div className='container container-reservations'>
                 <div className='row row-titles'>
                     <div className='col-sm-3'>Name</div>
                     <div className='col-sm-2'>Route(s)</div>

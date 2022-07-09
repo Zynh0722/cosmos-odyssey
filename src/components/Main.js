@@ -5,7 +5,7 @@ import './css/main.css';
 import Success from './Success';
 
 function Main() {
-    
+
     var query = false;
 
     if (new URLSearchParams(window.location.search).get('successful') === "true") {
@@ -15,7 +15,10 @@ function Main() {
     return (
         <main>
             <div className="container container-main">
-                <h1 className='text-center'>Cosmos Odyssey</h1>
+                <div className='title-box'>
+                    <h1 className='text-center'>Cosmos Odyssey</h1>
+                </div>
+                <hr className='hr-main'/>
                 <div className="row mx-1 my-3">
                     <PlanetsButton />
                 </div>
