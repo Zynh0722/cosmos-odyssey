@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Fragment } from 'react';
+import ReservationRow from './ReservationRow';
+import NoReservationRow from './NoReservationRow';
 
-function Reservations() {
+function Reservations({reservations}) {
+
+    const [condition, setCondition] = useState(false);
+
+    useEffect(() => {
+        if (reservations !== null && reservations !== undefined && reservations.length !== 0) {
+            setCondition(true);
+        }
+    }, [])
+
     return (  
         <Fragment>
             <p className='subtitle'>Reservations</p>
@@ -13,14 +24,14 @@ function Reservations() {
                     <div className='col-sm-2'>Total Quoted Time</div>
                     <div className='col-sm-2'>Travel Company Name(s)</div>
                 </div>
-                <div className='row row-content'>
-                    <hr/>
-                    <div className='col-sm-3'><p className='row-content-p'>Friedrich Einswell der Hunt</p></div>
-                    <div className='col-sm-2'><p className='row-content-p'>Mars to Earth</p></div>
-                    <div className='col-sm-2'><p className='row-content-p'>19284717.12$</p></div>
-                    <div className='col-sm-2'><p className='row-content-p'>12 days</p></div>
-                    <div className='col-sm-2'><p className='row-content-p'>Hellflights - Straight to Hell</p></div>
-                </div>
+                {
+                    condition ?
+                        reservations.map((reservation) =>
+                            <ReservationRow
+                                reservation={reservation} />)
+                        :
+                        <NoReservationRow />
+                }
             </div>
         </Fragment>
     );

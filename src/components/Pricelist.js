@@ -21,7 +21,6 @@ function Pricelist({ fromPlanet, toPlanet, leg, pricelistId }) {
 
         }
         setModal(document.getElementById("ReservationModal"));
-        console.log(modal);
     }, [])
 
 

@@ -13,6 +13,7 @@ function App() {
   const [fromPlanet, setFromPlanet] = useState();
   const [toPlanet, setToPlanet] = useState();
   const [pricelistId, setPricelistId] = useState();
+  const [reservations, setReservations] = useState();
 
   useEffect(() => {
     fetch("http://localhost:5000/pricelists")
@@ -20,7 +21,11 @@ function App() {
       .then(data => {
         setPricelist(data)
         setPricelistId(data.id)
-      })
+      });
+
+    fetch("http://localhost:5000/reservations/getall")
+      .then(res => res.json())
+      .then(data => setReservations(data));
   }, []);
 
   return (
@@ -31,17 +36,18 @@ function App() {
           element={<Main />} />
 
         <Route exact path="/planets"
-          element={<Planets 
+          element={<Planets
             fromPlanet={fromPlanet}
             toPlanet={toPlanet}
             setFromPlanet={setFromPlanet}
             setToPlanet={setToPlanet} />} />
 
         <Route exact path="/reservations"
-          element={<Reservations />} />
+          element={<Reservations
+            reservations={reservations} />} />
 
         <Route exact path="/pricelist"
-          element={<Pricelist 
+          element={<Pricelist
             fromPlanet={fromPlanet}
             toPlanet={toPlanet}
             leg={

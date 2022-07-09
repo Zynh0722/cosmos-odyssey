@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
-function ReservationModal({ modal, setSendData, sendData, setSuccessfulEntry }) {
+const axios = require("axios");
+
+function ReservationModal({ modal, setSendData, sendData }) {
 
     const modalId = modal;
 
-    const [fName, setFName] = useState('');
-    const [lName, setLName] = useState('');
+    const [fName, setFName] = useState("");
+    const [lName, setLName] = useState("");
 
     var span = document.getElementById("close");
     var el = document.getElementById("FName");
@@ -54,6 +55,9 @@ function ReservationModal({ modal, setSendData, sendData, setSuccessfulEntry }) 
                 PricelistId: sendData.PricelistId
             }
         );
+
+        axios.post("http://localhost:5000/reservations/post", sendData);
+
         window.location.href = "/?successful=true";
     }
     useEffect(() => {
