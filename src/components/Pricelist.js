@@ -11,11 +11,14 @@ function Pricelist({ fromPlanet, toPlanet, leg, pricelistId }) {
     const [modal, setModal] = useState();
     const [condition, setCondition] = useState();
     const [sendData, setSendData] = useState();
+    const [sortName, setSortName] = useState(false);
+    const [currentSort, setCurrentSort] = useState("");
 
     useEffect(() => {
         try {
             if (leg.providers !== undefined && leg.providers !== null) {
                 setCondition(true);
+                leg.providers.sort();
             }
         } catch (error) {
 

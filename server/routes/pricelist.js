@@ -38,11 +38,14 @@ recordRoutes.route("/pricelists").get(function (req, res) {
             let sortArray = await pricelists
             .find({})
             .toArray();
-            if (sortArray.length > 15) {
+            if (sortArray.length > 0) {
               sortArray.sort((a, b) => Date.parse(a.validUntil) - Date.parse(b.validUntil));
               let oldestPricelistId = sortArray[0].id;
               pricelists
                 .deleteMany({ "id": oldestPricelistId });
+              let reservations = await db_connect.collection("reservations");
+              reservations
+                .deleteMany({ "PricelistId": oldestPricelistId });
             }
           });
       return data;
@@ -83,17 +86,6 @@ recordRoutes.route("/reservations/getall").get(function (req, res) {
       if (err) throw err;
         res.send(result);
     });
-});
-
-// This section will help you delete a pricelist
-recordRoutes.route("/:id").delete((req, response) => {
-  let db_connect = dbo.getDb();
-  let myquery = { _id: ObjectId(req.params.id) };
-  db_connect.collection("]").deleteOne(myquery, function (err, obj) {
-    if (err) throw err;
-    console.log("1 document deleted");
-    response.json(obj);
-  });
 });
 
 module.exports = recordRoutes;
