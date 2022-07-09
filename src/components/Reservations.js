@@ -5,10 +5,12 @@ import NoReservationRow from './NoReservationRow';
 
 function Reservations({reservations}) {
 
+    console.log(reservations);
+
     const [condition, setCondition] = useState(false);
 
     useEffect(() => {
-        if (reservations !== null && reservations !== undefined && reservations.length !== 0) {
+        if (reservations !== null && reservations !== undefined && reservations.length > 0) {
             setCondition(true);
         }
     }, [])

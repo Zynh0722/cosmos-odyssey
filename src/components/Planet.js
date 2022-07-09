@@ -2,44 +2,44 @@ import React, { Fragment, useEffect } from 'react';
 const json = require('../planetrelations.json');
 
 function Planet({ planetName, fromPlanet, toPlanet, setFromPlanet, setToPlanet }) {
-    
+
     function selectPlanet(planetName) {
-        let planetId = document.getElementById(planetName).classList;
-        //console.log(planetId);
+        let planetClasses = document.getElementById(planetName).classList;
+        //console.log(planetClasses);
         //console.log(planetName);
 
-        if (!fromPlanet) {
-            planetId.add('selected');
+        if (!fromPlanet && !planetClasses.contains('disabled')) {
+            planetClasses.add('selected');
             setFromPlanet(planetName);
         } else if (planetName === fromPlanet) {
-            planetId.remove('selected');
+            planetClasses.remove('selected');
             setFromPlanet('');
             if (toPlanet) {
-                document.getElementById(toPlanet).
-                    classList.remove('selected');
+                document.getElementById(toPlanet)
+                    .classList.remove('selected');
                 setToPlanet('');
             }
-        } else if (fromPlanet && !toPlanet) {
-            planetId.add('selected');
+        } else if (fromPlanet && !toPlanet && !planetClasses.contains('disabled')) {
+            planetClasses.add('selected');
             setToPlanet(planetName);
-        } else if (planetName == toPlanet) {
-            planetId.remove('selected');
+        } else if (planetName === toPlanet) {
+            planetClasses.remove('selected');
             setToPlanet('');
         }
     };
 
     useEffect(() => {
-        let planetId = document.getElementById(planetName).classList;
-        if (planetId.contains('disabled')) { 
+        let planetClasses = document.getElementById(planetName).classList;
+        if (planetClasses.contains('disabled')) {
             if (fromPlanet && !toPlanet && json[fromPlanet].includes(planetName)) {
-               planetId.remove('disabled');
+                planetClasses.remove('disabled');
             } else if (fromPlanet) {
-                if (planetName == fromPlanet) {
-                    planetId.remove('disabled');
+                if (planetName === fromPlanet) {
+                    planetClasses.remove('disabled');
                     return;
                 }
             } else {
-                planetId.remove('disabled');
+                planetClasses.remove('disabled');
                 return;
             }
         }

@@ -28,7 +28,7 @@ function Pricelist({ fromPlanet, toPlanet, leg, pricelistId }) {
     return (
         <Fragment>
             <p className='subtitle'>Select a provider</p>
-            <div className='container'>
+            <div className='container container-pricelist'>
                 <PriceTitles />
                 {
                     condition ?

@@ -43,18 +43,7 @@ function ReservationModal({ modal, setSendData, sendData }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        setSendData(
-            {
-                FirstName: fName,
-                LastName: lName,
-                Route: sendData.Route,
-                Price: sendData.Price,
-                FlightStart: sendData.FlightStart,
-                FlightEnd: sendData.FlightEnd,
-                Company: sendData.Company,
-                PricelistId: sendData.PricelistId
-            }
-        );
+
 
         axios.post("http://localhost:5000/reservations/post", sendData);
 
@@ -67,6 +56,19 @@ function ReservationModal({ modal, setSendData, sendData }) {
 
         if (fName.length <= 35 && fName.length > 0 && lName.length > 0 && lName.length <= 35) {
             submit.classList.remove('disabled');
+            setSendData(
+                {
+                    FirstName: fName,
+                    LastName: lName,
+                    Route: sendData.Route,
+                    Price: sendData.Price,
+                    FlightStart: sendData.FlightStart,
+                    FlightEnd: sendData.FlightEnd,
+                    Company: sendData.Company,
+                    PricelistId: sendData.PricelistId
+                }
+            );
+            console.log(sendData);
         } else if (!submit.classList.contains('disabled')) {
             submit.classList.add('disabled');
         }
