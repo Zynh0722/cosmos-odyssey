@@ -1,8 +1,6 @@
 import React from 'react';
 
 function ReservationRow({reservation}) {
-
-    console.log(reservation);
     
     return (  
         <div className='row row-content'>

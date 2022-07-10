@@ -1,4 +1,4 @@
-body{
+body {
     height: 100%;
     background-color: #111111;
 }
@@ -11,13 +11,22 @@ body::after {
     left: 0;
     bottom: 0;
     right: 0;
-    position: absolute;
+    position: fixed;
     z-index: -1;
 }
 
 .container {
     background-color: hwb(0 11% 88% / 0.65);
     border-radius: 0.45rem;
+}
+
+.subtitle {
+    user-select: none;
+}
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 /* Landing Page */
@@ -49,7 +58,7 @@ body::after {
 }
 
 .btn {
-    width:fit-content;
+    width: fit-content;
     margin: 0 auto;
     color: #f6f6f6;
     padding: 1.5rem;
@@ -78,7 +87,7 @@ body::after {
     display: block;
 }
 
-.success-toast{
+.success-toast {
     margin: 0 auto;
     background-color: #3378b8;
     padding: 0.2rem;
@@ -114,14 +123,16 @@ body::after {
 .subtitle-traveling-to {
     margin-top: 0;
 }
+
 .subtitle-routes {
+    margin-top: 0;
     margin-bottom: 0;
-    font-size:1.25rem;
+    font-size: 1.25rem;
     font-style: italic;
 }
 
 .disabled-title {
-    color:#7e7e7e;
+    color: #7e7e7e;
 }
 
 .hidden {
@@ -145,18 +156,28 @@ body::after {
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 .col-planet {
     position: relative;
-    height: 270px; 
+    height: 270px;
 }
 
 .planet-text {
@@ -220,10 +241,19 @@ body::after {
 
 .selected {
     border: 1px solid #f6f6f6;
+    border-radius: 100%;
 }
 
 .disabled:hover {
     cursor: not-allowed;
+}
+
+.subtitle:hover {
+    cursor: default;
+}
+
+.planet-text {
+    user-select: none;
 }
 
 .btn-confirm {
@@ -233,7 +263,7 @@ body::after {
 }
 
 .disabled {
-    opacity: 50%;
+    opacity: 35%;
     border: 0;
 }
 
@@ -244,12 +274,12 @@ body::after {
     margin-bottom: 10%;
 }
 
-hr {    
+hr {
     margin-bottom: 0;
     padding-bottom: 0.5rem;
 }
 
-.row-titles  {
+.row-titles {
     padding-top: 0.2rem;
     font-size: 0.8rem;
     font-weight: 700;
@@ -278,9 +308,8 @@ hr {
 }
 
 .pricelist-title {
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    user-select:none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 .pricelist-title:hover {
@@ -291,19 +320,19 @@ hr {
 /* Reservation Modal */
 
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    padding-top: 100px; 
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4);
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
 }
-  
+
 .modal-content {
     background-color: #141414;
     margin: auto;
@@ -314,15 +343,15 @@ hr {
 
 .modal-content input[type="text"] {
     box-sizing: border-box;
-	outline: none;
-	display: block;
-	width: 40%;
+    outline: none;
+    display: block;
+    width: 40%;
     margin: 0 auto;
-	padding: 2px;
-	border: none;
-	border-bottom: 1px solid #ddd;
-	background: transparent;
-	height: 3rem;
+    padding: 2px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    height: 3rem;
     color: #f6f6f6;
     margin-top: 0.5rem;
 }
@@ -348,7 +377,7 @@ hr {
     font-size: 28px;
     font-weight: bold;
 }
-  
+
 .close:hover,
 .close:focus {
     color: #000;

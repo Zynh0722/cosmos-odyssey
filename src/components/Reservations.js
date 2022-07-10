@@ -5,8 +5,6 @@ import NoReservationRow from './NoReservationRow';
 
 function Reservations({reservations}) {
 
-    console.log(reservations);
-
     const [condition, setCondition] = useState(false);
 
     useEffect(() => {

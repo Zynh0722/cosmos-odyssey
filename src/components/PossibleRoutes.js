@@ -13,7 +13,7 @@ function PossibleRoutes({routes}) {
     return (
         <div className='container container-routes'>
             <div>
-                <h3 className='subtitle-routes'>Possible Routes: {textRoutes}</h3>
+                <h3 className='subtitle subtitle-routes'>Possible Routes: {textRoutes}</h3>
             </div>
         </div>
     );

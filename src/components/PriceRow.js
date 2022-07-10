@@ -22,7 +22,6 @@ function PriceRow({ modal, provider, distance, pricelistId, fromPlanet, toPlanet
         btn.onclick = function () {
             setSendData(data);
             modalId.style.display = "block";
-            console.log(modalId);
         };
     }, []);
 

@@ -68,7 +68,6 @@ function ReservationModal({ modal, setSendData, sendData }) {
                     PricelistId: sendData.PricelistId
                 }
             );
-            console.log(sendData);
         } else if (!submit.classList.contains('disabled')) {
             submit.classList.add('disabled');
         }

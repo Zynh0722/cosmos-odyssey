@@ -20,7 +20,6 @@ function Planets({fromPlanet, toPlanet, setFromPlanet, setToPlanet}) {
     useEffect(() => {
         try{
             if (fromPlanet.length === 0) {
-                console.log(fromPlanet);
                 setVisibility('hiddenOut');
                 delay(1950).then(() => setVisibility('hidden'));
                 setActivity('');

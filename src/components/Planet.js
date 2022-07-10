@@ -5,8 +5,6 @@ function Planet({ planetName, fromPlanet, toPlanet, setFromPlanet, setToPlanet }
 
     function selectPlanet(planetName) {
         let planetClasses = document.getElementById(planetName).classList;
-        //console.log(planetClasses);
-        //console.log(planetName);
 
         if (!fromPlanet && !planetClasses.contains('disabled')) {
             planetClasses.add('selected');
@@ -30,16 +28,20 @@ function Planet({ planetName, fromPlanet, toPlanet, setFromPlanet, setToPlanet }
 
     useEffect(() => {
         let planetClasses = document.getElementById(planetName).classList;
+        let planetTextClasses = document.getElementById(planetName + "-text").classList;
         if (planetClasses.contains('disabled')) {
             if (fromPlanet && !toPlanet && json[fromPlanet].includes(planetName)) {
                 planetClasses.remove('disabled');
+                planetTextClasses.remove('disabled');
             } else if (fromPlanet) {
                 if (planetName === fromPlanet) {
                     planetClasses.remove('disabled');
+                    planetTextClasses.remove('disabled');
                     return;
                 }
             } else {
                 planetClasses.remove('disabled');
+                planetTextClasses.remove('disabled');
                 return;
             }
         }
@@ -49,10 +51,12 @@ function Planet({ planetName, fromPlanet, toPlanet, setFromPlanet, setToPlanet }
         if (fromPlanet && toPlanet) {
             if (planetName !== fromPlanet && planetName !== toPlanet) {
                 document.getElementById(planetName).classList.add('disabled');
+                document.getElementById(planetName+"-text").classList.add('disabled');
             }
         } else if (fromPlanet) {
             if (!json[fromPlanet].includes(planetName) && planetName !== fromPlanet) {
                 document.getElementById(planetName).classList.add('disabled');
+                document.getElementById(planetName+"-text").classList.add('disabled');
             }
         };
     } catch (error) {
@@ -68,7 +72,7 @@ function Planet({ planetName, fromPlanet, toPlanet, setFromPlanet, setToPlanet }
                     <img id={planetName} className={'img-planet img-' + planetName.toLowerCase()} src={"/planets/" + planetName.toLowerCase() + ".png"} alt='planet'></img>
                 </div>
             </div>
-            <p className='planet-text'>{planetName}</p>
+            <p id={planetName + "-text"} className='planet-text'>{planetName}</p>
         </Fragment>
     );
 }
