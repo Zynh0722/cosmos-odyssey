@@ -6,11 +6,11 @@ function SubmitButton({allDone, fromPlanet, toPlanet}) {
 
     useEffect(() => {
         if (allDone) {
-            document.getElementById("Continue").
-                    classList.remove('disabled');
+            document.getElementById("Continue")
+                    .classList.remove('disabled');
         } else {
-            document.getElementById("Continue").
-                    classList.add('disabled');
+            document.getElementById("Continue")
+                    .classList.add('disabled');
         }
     });
 

@@ -13,7 +13,7 @@ function Reservations({reservations}) {
         if (reservations !== null && reservations !== undefined && reservations.length > 0) {
             setCondition(true);
         }
-    }, [])
+    }, [reservations])
 
     return (  
         <Fragment>

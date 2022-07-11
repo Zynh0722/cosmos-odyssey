@@ -22,7 +22,7 @@ function Pricelist({ fromPlanet, toPlanet, leg, pricelistId }) {
             }
         } catch (error) { }
         setModal(document.getElementById("ReservationModal"));
-    }, []);
+    }, [leg.providers]);
 
     switch (currentSort) {
         case "CompanyAsc":

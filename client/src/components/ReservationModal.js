@@ -36,7 +36,7 @@ function ReservationModal({ modal, setSendData, sendData }) {
     }
 
     window.onclick = function (event) {
-        if (event.target == modal) {
+        if (event.target === modal) {
             modalId.style.display = "none";
         }
     }
@@ -75,13 +75,13 @@ function ReservationModal({ modal, setSendData, sendData }) {
 
         if (fName.length > 35) {
             error1.style.display = "block";
-        } else if (error1.style.display == "block") {
+        } else if (error1.style.display === "block") {
             error1.style.display = "none";
         }
 
         if (lName.length > 35) {
             error2.style.display = "block";
-        } else if (error2.style.display == "block") {
+        } else if (error2.style.display === "block") {
             error2.style.display = "none";
         }
     })

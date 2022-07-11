@@ -44,7 +44,7 @@ function Planets({fromPlanet, toPlanet, setFromPlanet, setToPlanet}) {
         } catch (error) {
 
         }
-    })
+    }, [fromPlanet, toPlanet])
 
     return (
         <div>

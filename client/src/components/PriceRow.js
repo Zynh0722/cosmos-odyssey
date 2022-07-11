@@ -23,8 +23,8 @@ function PriceRow({ modal, provider, distance, pricelistId, fromPlanet, toPlanet
             setSendData(data);
             modalId.style.display = "block";
             console.log(modalId);
-        };
-    }, []);
+        }; 
+    });
 
 
 
