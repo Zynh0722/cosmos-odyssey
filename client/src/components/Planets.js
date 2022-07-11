@@ -4,7 +4,7 @@ import PossibleRoutes from './PossibleRoutes';
 import SubtitleFrom from './SubtitleFrom';
 import SubtitleTo from './SubtitleTo';
 import SubmitButton from './SubmitButton';
-const relations = require('../planetrelations.json');
+import relations from '../planetrelations.json';
 
 function Planets({fromPlanet, toPlanet, setFromPlanet, setToPlanet}) {
 

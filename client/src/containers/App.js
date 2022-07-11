@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
-import Main from '../components/Main';
+import Main from '../components/main/Main';
 import Planets from '../components/Planets';
 import Reservations from '../components/Reservations';
 import { Routes, Route } from 'react-router-dom';
