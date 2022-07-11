@@ -68,6 +68,7 @@ function Pricelist({ fromPlanet, toPlanet, leg, pricelistId }) {
                         leg.providers.map((provider, index) =>
                             <PriceRow
                                 modal={modal}
+                                key={provider.id}
                                 provider={provider}
                                 distance={leg.routeInfo.distance}
                                 pricelistId={pricelistId}
