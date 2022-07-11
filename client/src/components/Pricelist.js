@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Fragment } from 'react';
 import './css/main.css'
 import NoPriceRow from './NoPriceRow';
 import PriceRow from './PriceRow';
@@ -57,7 +56,7 @@ function Pricelist({ fromPlanet, toPlanet, leg, pricelistId }) {
     }
 
     return (
-        <Fragment>
+        <>
             <p className='subtitle'>Select a provider</p>
             <div className='container container-pricelist'>
                 <PriceTitles
@@ -84,7 +83,7 @@ function Pricelist({ fromPlanet, toPlanet, leg, pricelistId }) {
                 modal={modal}
                 setSendData={setSendData}
                 sendData={sendData} />
-        </Fragment>
+        </>
     );
 }
 
