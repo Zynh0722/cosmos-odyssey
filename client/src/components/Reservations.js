@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Fragment } from 'react';
 import ReservationRow from './ReservationRow';
 import NoReservationRow from './NoReservationRow';
 
@@ -16,7 +15,7 @@ function Reservations({reservations}) {
     }, [reservations])
 
     return (  
-        <Fragment>
+        <>
             <p className='subtitle'>Reservations</p>
             <div className='container container-reservations'>
                 <div className='row row-titles'>
@@ -35,7 +34,7 @@ function Reservations({reservations}) {
                         <NoReservationRow />
                 }
             </div>
-        </Fragment>
+        </>
     );
 }
 
