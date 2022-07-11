@@ -38,11 +38,6 @@ function Pricelist({ fromPlanet, toPlanet, leg, pricelistId }) {
             break;
         case "TimeAsc":
             providers.sort(function(a, b) { 
-                console.log("========================")
-                console.log(a)
-                console.log(b)
-                console.log(Date.parse(a.flightEnd) - Date.parse(a.flightStart))
-                console.log(Date.parse(b.flightEnd) - Date.parse(b.flightStart))
                 return (Date.parse(a.flightEnd) - Date.parse(a.flightStart)) - (Date.parse(b.flightEnd) - Date.parse(b.flightStart));
             });
             break;
@@ -67,7 +62,6 @@ function Pricelist({ fromPlanet, toPlanet, leg, pricelistId }) {
                         leg.providers.map((provider, index) =>
                             <PriceRow
                                 modal={modal}
-                                key={provider.id}
                                 provider={provider}
                                 distance={leg.routeInfo.distance}
                                 pricelistId={pricelistId}
