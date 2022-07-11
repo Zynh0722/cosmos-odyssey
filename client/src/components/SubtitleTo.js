@@ -1,11 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 function SubtitleTo({visibility}) {
 
     return (  
-        <Fragment>
-            <h2 className={'subtitle subtitle-traveling-to ' + visibility}>Where are you traveling to?</h2>
-        </Fragment>
+        <h2 className={'subtitle subtitle-traveling-to ' + visibility}>Where are you traveling to?</h2>
     );
 }
 
